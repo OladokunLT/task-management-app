@@ -31,22 +31,28 @@ const AssignTask = () => {
         <div className="container">
             <h1>Task Manager</h1>
             <form onSubmit={handleSubmit}>
-                <div className="field-wrap">
-                    <label htmlFor="name">Name</label>
-                    <input type="text" id="name" value={recentTask.name} onChange={(e)=>setRecentTask({...recentTask, name: e.target.value})} placeholder="Enter task name"/>
+
+                <fieldset className="field-wrap">
+                    <legend className="blend-legend">Task name</legend>
+                    <input type="text" id="name" value={recentTask.name} onChange={(e)=>setRecentTask({...recentTask, name: e.target.value})} placeholder="Enter task name" required/>
+                </fieldset>
+                <div className="date-submit">
+                    <fieldset className="field-wrap ">
+                        <legend className="">Due date</legend>
+                        <input type="date" id="due-date" value={recentTask.dueDate} onChange={(e)=>setRecentTask({...recentTask, dueDate: e.target.value})} required/>
+                    </fieldset>
+                    <fieldset  className="field-wrap">
+                        <legend className="blend-legend">Add task</legend>
+                        <button type="submit">  Add task
+                            <span>  <AddCircleOutlineIcon /> </span> 
+                        </button>
+                    </fieldset>
                 </div>
-                <div className="field-wrap">
-                    <label htmlFor="due-date">Due date</label>
-                    <input type="date" id="due-date" value={recentTask.dueDate} onChange={(e)=>setRecentTask({...recentTask, dueDate: e.target.value})}/>
-                </div>
-                <button type="submit">  Add task
-                    <span>  <AddCircleOutlineIcon /> </span> 
-                </button>
             </form>
 
             <main>
                 <div className="task-wrap">
-                    <h3>All Tasks</h3>
+                    <h2>All Tasks</h2>
                     <div className="task-wrapper">
                         {allTask.map((task) =>(   
                             <div key={task.id}>
@@ -55,8 +61,8 @@ const AssignTask = () => {
                                         <span > <RadioButtonUncheckedIcon /> </span>
                                     </button>
                                     <article>
-                                        <p>{task.name}</p>
-                                        <p> <strong>Due Date</strong> {task.dueDate} </p>
+                                        <p><strong><small> Task name: </small></strong> {task.name}</p>
+                                        <p> <strong><small> Due Date: </small></strong> {task.dueDate} </p>
                                     </article>
                                     <button className="del-btn"
                                         onClick={()=>{
@@ -64,7 +70,9 @@ const AssignTask = () => {
                                                 allTask.filter((e) => e.id !== task.id)
                                             )
                                         }}
-                                    ><span><DeleteOutlineIcon /></span></button>
+                                    >
+                                        <span><DeleteOutlineIcon /></span>
+                                    </button>
                                 </div>
                             </div>
                         ))}

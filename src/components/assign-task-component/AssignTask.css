@@ -1,47 +1,72 @@
-
-
 .container {
     width: 90%;
     margin-inline: auto;
     background-color: azure;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+h1 {
+    font-size: 24px;
+}
+h2 {
+    font-size: 20px;
 }
 form {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 5px;
     margin-top: 10px;
     margin-bottom: 20px;
 }
 .field-wrap {
     display: flex;
-    flex-direction: column;
+}
+.field-wrap {
+    display: flex;
+    /* flex-direction: column; */
     gap: 5px;
+    flex: 1;
+    align-items: center;
+}
+fieldset {
+    border: none;
+}
+legend {
+    font-weight: 500;
+    font-size: 0.7em;
 }
 input {
-    /* display: flex; */
     flex: 1;
     padding: 10px;
     font-family: inherit;
     color: inherit;
     border-radius: 8px;
+    border:  solid 1px;
 }
-label {
-    display: block;
+.date-submit {
+    display: flex;
+    gap: 5px;
 }
 button[type="submit"] {
     display: flex;
-    /* align-items: center; */
+    align-items: center;
     justify-content: center;
     gap: 10px;
     font-size: 18px;
     background-color: white;
-    border: solid 2px;
+    border: solid 1px;
+    flex: 1;
+}
+span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4px;
 }
 .task-wrapper {
-    /* background-color: aqua; */
     display: flex;
     flex-direction: column;
-    row-gap: 10px;
+    gap: 5px;
 }
 .each-task {
     display: flex;
@@ -52,6 +77,33 @@ button[type="submit"] {
     background-color: white;
 }
 article {
-    /* background-color: purple; */
     flex: 1;
+}
+.del-btn:hover {
+    color: red;
+}
+
+@media (width > 425px) {
+    .container {
+        width: 75%;
+    }
+}
+@media (width > 768px) {
+    .container {
+        width: 50%;
+    }
+    legend {
+        font-size: 0.9em;
+    }
+}
+@media (width > 900px) {
+    form {
+        flex-direction: row;
+    }
+    h1 {
+        font-size: 28px;
+    }
+    h2 {
+        font-size: 20px;
+    }
 }

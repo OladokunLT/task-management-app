@@ -8,8 +8,7 @@ function App() {
     <>
       <div>
         <AssignTask />
-      </div>
-      
+      </div>      
     </>
   )
 }
