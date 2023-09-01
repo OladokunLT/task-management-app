@@ -1,5 +1,13 @@
 import { useState } from "react";
 import "./AssignTask.css"
+// import {  AddCircleOutlineIcon, RadioButtonChecked, DeleteOutlineIcon } from "@mui/icons-material";
+// import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+// import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp';
+
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+
 
 let nextId = 0;
 const AssignTask = () => {
@@ -7,7 +15,6 @@ const AssignTask = () => {
         id: nextId++,
         name: "",
         dueDate: "",
-        Instruction: ""
     }
     const [recentTask, setRecentTask] = useState(clearInputField);
     const [allTask, setAllTask] = useState([])
@@ -22,39 +29,46 @@ const AssignTask = () => {
 
     return (
         <div className="container">
-            <h1>Dashboard</h1>
+            <h1>Task Manager</h1>
             <form onSubmit={handleSubmit}>
                 <div className="field-wrap">
                     <label htmlFor="name">Name</label>
-                    <input type="text" id="name" value={recentTask.name} onChange={(e)=>setRecentTask({...recentTask, name: e.target.value})}/>
+                    <input type="text" id="name" value={recentTask.name} onChange={(e)=>setRecentTask({...recentTask, name: e.target.value})} placeholder="Enter task name"/>
                 </div>
                 <div className="field-wrap">
                     <label htmlFor="due-date">Due date</label>
-                    <input type="text" id="due-date" value={recentTask.dueDate} onChange={(e)=>setRecentTask({...recentTask, dueDate: e.target.value})}/>
+                    <input type="date" id="due-date" value={recentTask.dueDate} onChange={(e)=>setRecentTask({...recentTask, dueDate: e.target.value})}/>
                 </div>
-                <div className="field-wrap">
-                    <label htmlFor="Instruction">Instruction</label>
-                    <input type="text" id="instruction" value={recentTask.Instruction} onChange={(e)=>setRecentTask({...recentTask, Instruction: e.target.value})}/>
-                </div>
-                <button type="submit"> Add task </button>
+                <button type="submit">  Add task
+                    <span>  <AddCircleOutlineIcon /> </span> 
+                </button>
             </form>
 
             <main>
                 <div className="task-wrap">
-                    {allTask.map((task, index) =>(
-                        <div key={index}> 
-                            <h3>Task: {task.name}</h3>
-                            <p><strong>Instruction: </strong>{task.Instruction}</p>
-                            <p> <strong>Due Date</strong> {task.dueDate} </p>
-                            <button 
-                                onClick={()=>{
-                                    setAllTask(
-                                        allTask.filter((e) => e.id !== task.id)
-                                    )
-                                }}
-                            >delete</button>
-                        </div>
-                    ))}
+                    <h3>All Tasks</h3>
+                    <div className="task-wrapper">
+                        {allTask.map((task) =>(   
+                            <div key={task.id}>
+                                <div className="each-task">
+                                    <button>
+                                        <span > <RadioButtonUncheckedIcon /> </span>
+                                    </button>
+                                    <article>
+                                        <p>{task.name}</p>
+                                        <p> <strong>Due Date</strong> {task.dueDate} </p>
+                                    </article>
+                                    <button className="del-btn"
+                                        onClick={()=>{
+                                            setAllTask(
+                                                allTask.filter((e) => e.id !== task.id)
+                                            )
+                                        }}
+                                    ><span><DeleteOutlineIcon /></span></button>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </main>
         </div>
