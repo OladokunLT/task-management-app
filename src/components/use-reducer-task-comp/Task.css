@@ -1,0 +1,21 @@
+.task-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    background: white;
+    border-radius: 10px;
+}
+.task-container:hover {
+    opacity: .8;;
+}
+input[type="checkbox"] {
+    width: 50px;
+    height: 80%;
+}
+.mark-done {
+    display: grid;
+
+}
+small {
+    /* font-size: xx-small; */
+}
