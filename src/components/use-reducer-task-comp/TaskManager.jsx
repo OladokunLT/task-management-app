@@ -15,7 +15,8 @@ function reducer(allTask, action) {
     switch (action.type) {
         case ACTIONS.ADD_TASK:
             /* // I tried adding validate input but not working as expected.
-               // It validates but cause blank page after the finishing the validation.
+               // It validates but causes blank page after finishing the validation.
+
                 if(action.payload.name === "" && action.payload.dueDate === "") {
                     alert("Task input field cannot be empty")
                     break
@@ -83,11 +84,11 @@ const TaskManager = () => {
                 <div className="date-submit">
                     <fieldset className="field-wrap ">
                         <legend className="">Due date</legend>
-                        <input value={dueDate} onChange={(e)=>setDueDate(e.target.value)} type="date" required />
+                        <input value={dueDate} onChange={(e)=>setDueDate(e.target.value)} type="date" required title="Select due date" />
                     </fieldset>
                     <fieldset  className="field-wrap">
                         <legend className="blend-legend">Add task</legend>
-                        <button type="submit" title="click to add new task">  Add task
+                        <button type="submit" title="Add task to list">  Add task
                             <span>  <AddCircleOutlineIcon /> </span> 
                         </button>
                     </fieldset>

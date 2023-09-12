@@ -9,13 +9,19 @@
     opacity: .8;;
 }
 input[type="checkbox"] {
-    width: 50px;
-    height: 80%;
+    /* width: 0px; */
+    height: 35px;
 }
 .mark-done {
     display: grid;
 
 }
 small {
-    /* font-size: xx-small; */
+    font-size: xx-small;
+}
+.delete {
+    color: red;
+}
+.delete:hover {
+    scale: 1.05;
 }
