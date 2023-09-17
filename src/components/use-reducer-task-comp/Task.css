@@ -1,27 +1,24 @@
-.task-container {
-    display: flex;
+/* .task-container {
     justify-content: space-between;
     margin-bottom: 5px;
     background: white;
     border-radius: 10px;
-}
-.task-container:hover {
+} */
+/* .task-container:hover {
     opacity: .8;;
-}
-input[type="checkbox"] {
-    /* width: 0px; */
+} */
+/* input[type="checkbox"] {
     height: 35px;
-}
-.mark-done {
+} */
+/* .mark-done {
     display: grid;
-
-}
-small {
+} */
+/* small {
     font-size: xx-small;
-}
-.delete {
+} */
+/* .delete {
     color: red;
-}
-.delete:hover {
+} */
+/* .delete:hover {
     scale: 1.05;
-}
+} */
