@@ -1,20 +1,11 @@
 // import React from 'react';
 import { useReducer, useState } from "react";
-import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
+// import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import Swal from 'sweetalert2'
 import { ACTIONS } from "./ACTIONS";
 import Task from "./Task";
 import { reducer } from "./reducer";
 import { Add, ArrowDownward } from "@mui/icons-material";
-
-export const newTask = (name, dueDate) => {
-  return {
-    id: new Date().getTime().toString(),
-    name: name,
-    dueDate: dueDate,
-    complete: false,
-  };
-};
 
 const TaskManager = () => {
   const [allTask, dispatch] = useReducer(reducer, []);
@@ -23,8 +14,7 @@ const TaskManager = () => {
   const [createTask, setCreateTask] = useState(false);
 
   const handleCreateTask = (() => {
-    setCreateTask(!false)
-    document.getElementById("form").style.display = "block";
+    setCreateTask(!createTask)
   })
     // console.log(createTask);
 
@@ -40,21 +30,22 @@ const TaskManager = () => {
       'New task added!',
       'success'
     )
-    document.getElementById("form").style.display = "none";
+
+    setCreateTask(false)
     setName("");
     setDueDate("");
   };
 
   return (
-    <main className="container mx-auto">
+    <main className="container w-11/12 mx-auto">
       <h1 className="font-bold text-xl py-4">Task Manager</h1>
       <button onClick={handleCreateTask}
-        className="w-full my-1 text-blue-700 bg-white rounded-md py-4 p-1 font-bold flex items-center gap-2 shadow-md hover:bg-blue-50 transition-all"
+        className="w-full my-2 text-blue-700 bg-white rounded-md py-4 p-1 font-bold flex items-center gap-2 shadow-md hover:bg-blue-50 transition-all hover:outline-blue-700 focus:outline-blue-700"
       > < Add /> Create Task </button>
       {
         createTask && (
-        <form onSubmit={handleSubmit} id="form" 
-          className="w-full bg-slate-50"
+        <form onSubmit={handleSubmit} 
+          className="w-full bg-slate-50 px-2 rounded-md shadow"
         >
           <fieldset className="field-wrap">
             <legend className="blend-legend" htmlFor="task-name">
@@ -67,7 +58,7 @@ const TaskManager = () => {
               required
               placeholder="Add a task"
               id="task-name"
-              className="flex w-full flex-grow p-2 mb-2 rounded-md hover:shadow hover:bg-blue-50"
+              className="flex w-full shadow flex-grow p-2 mb-2 rounded-md hover:shadow hover:bg-blue-50 hover:outline-blue-700 focus:outline-blue-700"
             />
           </fieldset>
           <div className="date-submit flex gap-3">
@@ -79,13 +70,13 @@ const TaskManager = () => {
                 type="date"
                 required
                 title="Select due date"
-                className="p-2 rounded-md mb-2 hover:cursor-pointer hover:bg-blue-50"
+                className="p-2 shadow rounded-md mb-2 hover:cursor-pointer hover:bg-blue-50 hover:outline-blue-700 focus:outline-blue-700"
               />
             </fieldset>
             <fieldset className="field-wrap">
               <legend className="blend-legend">Add task</legend>
               <button type="submit" title="Add task to list" 
-                className="flex justify-center gap-1 p-2 bg-white hover:text-blue-500 hover:bg-blue-50 hover:font-bold hover:shadow-md rounded-md"
+                className="flex justify-center gap-1 px-2 py-[9px] bg-white hover:text-blue-500 hover:bg-blue-50 hover:font-bold hover:shadow-md rounded-md hover:outline-blue-700 focus:outline-blue-700 shadow"
               >
                 Add task <ArrowDownward />              
               </button>

@@ -1,5 +1,5 @@
 import { ACTIONS } from "./ACTIONS";
-import { newTask } from "./TaskManager";
+import { newTask } from "./newTask";
 
 export function reducer(allTask, action) {
   switch (action.type) {
