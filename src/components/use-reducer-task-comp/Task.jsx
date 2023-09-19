@@ -16,7 +16,7 @@ const Task = ({ task, dispatch }) => {
         >
           {task.name}
         </span>
-        <small> Due: < CalendarMonth /> {task.dueDate} </small>
+        <small> Due: < CalendarMonth className=" "/> {task.dueDate.split("T").join(", ")} </small>
       </div>
       <button onClick={()=>dispatch({ type:ACTIONS.DELETE_TASK, payload:{id:task.id} })} title="Delete task" className='hover:text-red-500 hover:font-bold'> <Delete /> <br /><small>Delete</small> </button>
     </div>

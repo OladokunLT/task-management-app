@@ -11,12 +11,12 @@ const TaskManager = () => {
   const [allTask, dispatch] = useReducer(reducer, []);
   const [name, setName] = useState("");
   const [dueDate, setDueDate] = useState("");
-  const [createTask, setCreateTask] = useState(false);
+  const [showForm, setShowForm] = useState(false);
 
-  const handleCreateTask = (() => {
-    setCreateTask(!createTask)
+  const handleShowForm = (() => {
+    setShowForm(!showForm)
   })
-    // console.log(createTask);
+    // console.log(showForm);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -31,21 +31,22 @@ const TaskManager = () => {
       'success'
     )
 
-    setCreateTask(false)
+    setShowForm(!showForm)
     setName("");
     setDueDate("");
   };
 
   return (
     <main className="container w-11/12 mx-auto">
-      <h1 className="font-bold text-xl py-4">Task Manager</h1>
-      <button onClick={handleCreateTask}
+      <h1 className="font-bold text-xl py-4">Task Manager </h1>
+      <p>Total task : {allTask.length} </p>
+      <button onClick= {handleShowForm}
         className="w-full my-2 text-blue-700 bg-white rounded-md py-4 p-1 font-bold flex items-center gap-2 shadow-md hover:bg-blue-50 transition-all hover:outline-blue-700 focus:outline-blue-700"
       > < Add /> Create Task </button>
       {
-        createTask && (
+        showForm && (
         <form onSubmit={handleSubmit} 
-          className="w-full bg-slate-50 px-2 rounded-md shadow"
+          className="w-full bg-blue-100 px-2 rounded-md shadow"
         >
           <fieldset className="field-wrap">
             <legend className="blend-legend" htmlFor="task-name">
@@ -63,11 +64,11 @@ const TaskManager = () => {
           </fieldset>
           <div className="date-submit flex gap-3">
             <fieldset className="field-wrap ">
-              <legend className="">Due date</legend>
+              <legend className="">Due date & time</legend>
               <input
                 value={dueDate}
                 onChange={(e) => setDueDate(e.target.value)}
-                type="date"
+                type="datetime-local"
                 required
                 title="Select due date"
                 className="p-2 shadow rounded-md mb-2 hover:cursor-pointer hover:bg-blue-50 hover:outline-blue-700 focus:outline-blue-700"
@@ -86,8 +87,7 @@ const TaskManager = () => {
 
         )
       }
-      
-
+    
       {allTask.map((task) => {
         return <Task key={task.id} task={task} dispatch={dispatch} />;
       })}

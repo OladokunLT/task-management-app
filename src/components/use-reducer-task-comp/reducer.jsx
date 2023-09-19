@@ -15,6 +15,7 @@ export function reducer(allTask, action) {
       });
     case ACTIONS.DELETE_TASK:
       return allTask.filter((task) => task.id !== action.payload.id);
+
     default:
       return allTask;
   }
